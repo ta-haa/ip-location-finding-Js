@@ -1,0 +1,25 @@
+<script>
+
+fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        document.write('ip Adresi:', data.ip);
+    })
+    .catch(error => {
+        document.write('Hata:', error);
+    });
+ 
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        document.write('Latitude: ' + latitude);
+        document.write('Longitude: ' + longitude);
+    }, function(error) {
+        document.write('Error getting location:', error);
+    });
+} else {
+    console.log('Desteklemiyor.');
+}
+
+</script>
